@@ -1,0 +1,32 @@
+﻿@model IEnumerable<KP_Eventify.Models.Ticket>
+
+@{
+    ViewData["Title"] = "Моите билети";
+}
+
+<h1>Моите билети</h1>
+
+@if (TempData["SuccessMessage"] is string success)
+{
+    <div class="alert alert-success">@success</div>
+}
+
+<table class="table table-bordered">
+    <thead>
+        <tr>
+            <th>Събитие</th>
+            <th>Дата на събитието</th>
+            <th>Купен на</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var ticket in Model)
+        {
+            <tr>
+                <td>@ticket.Event?.Name</td>
+                <td>@ticket.Event?.Date.ToString("dd.MM.yyyy HH:mm")</td>
+                <td>@ticket.PurchasedOn.ToLocalTime().ToString("dd.MM.yyyy HH:mm")</td>
+            </tr>
+        }
+    </tbody>
+</table>

@@ -1,0 +1,53 @@
+﻿@model KP_Eventify.Models.Event
+
+@{
+    ViewData["Title"] = "Admin Create";
+}
+
+<h1>Admin Create</h1>
+
+<form asp-action="Create" method="post">
+    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+    <div class="mb-3">
+        <label asp-for="Name" class="form-label"></label>
+        <input asp-for="Name" class="form-control" />
+        <span asp-validation-for="Name" class="text-danger"></span>
+    </div>
+
+    <div class="mb-3">
+        <label asp-for="Description" class="form-label"></label>
+        <textarea asp-for="Description" class="form-control"></textarea>
+        <span asp-validation-for="Description" class="text-danger"></span>
+    </div>
+
+    <div class="mb-3">
+        <label asp-for="Date" class="form-label"></label>
+        <input asp-for="Date" class="form-control" type="datetime-local" />
+        <span asp-validation-for="Date" class="text-danger"></span>
+    </div>
+
+    <div class="mb-3">
+        <label asp-for="Price" class="form-label"></label>
+        <input asp-for="Price" class="form-control" />
+        <span asp-validation-for="Price" class="text-danger"></span>
+    </div>
+
+    <div class="mb-3">
+        <label asp-for="TotalTickets" class="form-label"></label>
+        <input asp-for="TotalTickets" class="form-control" />
+        <span asp-validation-for="TotalTickets" class="text-danger"></span>
+    </div>
+
+    <div class="mb-3">
+        <label asp-for="AvailableTickets" class="form-label"></label>
+        <input asp-for="AvailableTickets" class="form-control" />
+        <span asp-validation-for="AvailableTickets" class="text-danger"></span>
+    </div>
+
+    <button type="submit" class="btn btn-primary">Създай събитие</button>
+</form>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}

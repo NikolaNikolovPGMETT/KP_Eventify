@@ -1,0 +1,46 @@
+﻿@model IEnumerable<KP_Eventify.Models.Event>
+@using KP_Eventify.Constants
+
+@{
+    ViewData["Title"] = "Events";
+}
+
+<h1>Събития</h1>
+
+@if (User.IsInRole(Roles.Admin))
+{
+    <p>
+        <a asp-action="Create" class="btn btn-primary">Admin Create</a>
+    </p>
+}
+
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>Име</th>
+            <th>Дата</th>
+            <th>Цена</th>
+            <th>Налични билети</th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@item.Name</td>
+                <td>@item.Date.ToString("dd.MM.yyyy HH:mm")</td>
+                <td>@item.Price.ToString("F2") лв.</td>
+                <td>@item.AvailableTickets / @item.TotalTickets</td>
+                <td>
+                    <a asp-action="Details" asp-route-id="@item.Id" class="btn btn-sm btn-outline-primary">Details</a>
+                    @if (User.IsInRole(Roles.Admin))
+                    {
+                        <a asp-action="Edit" asp-route-id="@item.Id" class="btn btn-sm btn-outline-secondary">Edit</a>
+                        <a asp-action="Delete" asp-route-id="@item.Id" class="btn btn-sm btn-outline-danger">Delete</a>
+                    }
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

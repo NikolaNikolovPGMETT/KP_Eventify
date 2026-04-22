@@ -1,0 +1,51 @@
+﻿@model KP_Eventify.ViewModels.AdminTicketsViewModel
+
+@{
+    ViewData["Title"] = "Admin Tickets";
+}
+
+<h1>Admin Tickets</h1>
+
+<h3>Всички закупени билети</h3>
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>Събитие</th>
+            <th>Потребител</th>
+            <th>Купен на</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var ticket in Model.Tickets)
+        {
+            <tr>
+                <td>@ticket.Event?.Name</td>
+                <td>@ticket.User?.UserName</td>
+                <td>@ticket.PurchasedOn.ToLocalTime().ToString("dd.MM.yyyy HH:mm")</td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+<h3>Всички потребители</h3>
+<table class="table table-bordered">
+    <thead>
+        <tr>
+            <th>Username</th>
+            <th>Име</th>
+            <th>Телефон</th>
+            <th>Email</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var user in Model.Users)
+        {
+            <tr>
+                <td>@user.UserName</td>
+                <td>@user.FullName</td>
+                <td>@user.PhoneNumber</td>
+                <td>@user.Email</td>
+            </tr>
+        }
+    </tbody>
+</table>

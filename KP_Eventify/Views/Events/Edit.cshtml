@@ -1,0 +1,18 @@
+﻿@model KP_Eventify.Models.Event
+
+@{
+    ViewData["Title"] = "Редакция";
+}
+
+<h1>Редакция</h1>
+<form asp-action="Edit" method="post">
+    <input type="hidden" asp-for="Id" />
+    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+    <div class="mb-3"><label asp-for="Name" class="form-label"></label><input asp-for="Name" class="form-control" /></div>
+    <div class="mb-3"><label asp-for="Description" class="form-label"></label><textarea asp-for="Description" class="form-control"></textarea></div>
+    <div class="mb-3"><label asp-for="Date" class="form-label"></label><input asp-for="Date" class="form-control" type="datetime-local" /></div>
+    <div class="mb-3"><label asp-for="Price" class="form-label"></label><input asp-for="Price" class="form-control" /></div>
+    <div class="mb-3"><label asp-for="TotalTickets" class="form-label"></label><input asp-for="TotalTickets" class="form-control" /></div>
+    <div class="mb-3"><label asp-for="AvailableTickets" class="form-label"></label><input asp-for="AvailableTickets" class="form-control" /></div>
+    <button type="submit" class="btn btn-primary">Запази</button>
+</form>
